@@ -4,6 +4,7 @@ import net.proselyte.jwtappdemo.model.Role;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -21,11 +22,17 @@ public class JwtTokenProvider {
 
     }
 
-    public booleanvalidateToken(String token){
+    public boolean validateToken(String token){
 
     }
 
     private List<String> getRoleNames(List<Role> userRoles){
-        
+        List<String> result = new ArrayList<>();
+
+        userRoles.forEach(role -> {
+            result.add(role.getName());
+        });
+
+        return result;
     }
 }
