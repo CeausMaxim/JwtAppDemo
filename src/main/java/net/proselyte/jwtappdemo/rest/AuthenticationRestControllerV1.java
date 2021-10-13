@@ -4,6 +4,7 @@ import net.proselyte.jwtappdemo.dto.AuthenticationRequestDto;
 import net.proselyte.jwtappdemo.model.User;
 import net.proselyte.jwtappdemo.security.jwt.JwtTokenProvider;
 import net.proselyte.jwtappdemo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -28,6 +29,7 @@ public class AuthenticationRestControllerV1 {
 
     private final UserService userService;
 
+    @Autowired
     public AuthenticationRestControllerV1(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
