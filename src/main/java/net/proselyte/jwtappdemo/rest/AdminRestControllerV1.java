@@ -1,5 +1,6 @@
 package net.proselyte.jwtappdemo.rest;
 
+import net.proselyte.jwtappdemo.dto.AdminUserDto;
 import net.proselyte.jwtappdemo.dto.UserDto;
 import net.proselyte.jwtappdemo.model.User;
 import net.proselyte.jwtappdemo.service.UserService;
@@ -23,14 +24,14 @@ public class AdminRestControllerV1 {
     }
 
     @GetMapping(value = "users/{id}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<AdminUserDto> getUserById(@PathVariable(name = "id") Long id) {
         User user = userService.findById(id);
 
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        UserDto result = UserDto.fromUser(user);
+        AdminUserDto result = AdminUserDto.fromUser(user);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
